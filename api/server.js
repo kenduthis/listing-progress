@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 app.use(express.static('public'));
 
-app.get('/api/balances', (req, res) => {
+app.get('/public/balances', (req, res) => {
   const filePath = path.join(__dirname, 'balances.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
