@@ -1,5 +1,5 @@
 async function fetchProgress() {
-    const response = await fetch('/public/balances.json');
+    const response = await fetch('/balances.json');
     const data = await response.json();
   
     // Calculate progress for USDT + ETH towards $70,000
