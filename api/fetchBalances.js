@@ -89,7 +89,7 @@ async function fetchBalances() {
 
     console.log(data);
 
-/ Ensure the public directory exists
+// Ensure the public directory exists
     const publicDir = path.join(__dirname, '..', 'public');
     if (!fs.existsSync(publicDir)) {
       fs.mkdirSync(publicDir);
