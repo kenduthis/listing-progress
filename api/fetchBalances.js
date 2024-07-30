@@ -54,8 +54,8 @@ async function fetchEthToUsdRate() {
 // Fetch current Kendu token to USD exchange rate from CoinGecko
 async function fetchKenduToUsdRate() {
   try {
-    const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=kendu-token&vs_currencies=usd'); // Replace 'kendu-token' with the actual ID on CoinGecko
-    return response.data['kendu-token'].usd;
+    const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=kendu-inu&vs_currencies=usd'); // Replace 'kendu-token' with the actual ID on CoinGecko
+    return response.data['kendu-inu'].usd;
   } catch (error) {
     console.error('Error fetching Kendu to USD rate:', error);
     throw error;
