@@ -10,6 +10,7 @@ const kenduContractAddress = process.env.KENDU_CONTRACT_ADDRESS;
 // Fetch ETH balance
 async function fetchEthBalance() {
   try {
+    console.log("Fetching ETH balance...");
     const response = await axios.get(`https://api.etherscan.io/api?module=account&action=balance&address=${walletAddress}&tag=latest&apikey=${etherscanApiKey}`);
     return response.data.result / 1e18; // Convert Wei to Ether
   } catch (error) {
@@ -21,6 +22,7 @@ async function fetchEthBalance() {
 // Fetch USDT balance
 async function fetchUsdtBalance() {
   try {
+    console.log("Fetching USDT balance...");
     const response = await axios.get(`https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xdAC17F958D2ee523a2206206994597C13D831ec7&address=${walletAddress}&tag=latest&apikey=${etherscanApiKey}`);
     return response.data.result / 1e6; // USDT has 6 decimals
   } catch (error) {
@@ -32,6 +34,7 @@ async function fetchUsdtBalance() {
 // Fetch Kendu token balance
 async function fetchKenduBalance() {
   try {
+    console.log("Fetching Kendu token balance...");
     const response = await axios.get(`https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=${kenduContractAddress}&address=${walletAddress}&tag=latest&apikey=${etherscanApiKey}`);
     return response.data.result / 1e18; // Assuming Kendu has 18 decimals
   } catch (error) {
@@ -43,6 +46,7 @@ async function fetchKenduBalance() {
 // Fetch current ETH to USD exchange rate from CoinGecko
 async function fetchEthToUsdRate() {
   try {
+    console.log("Fetching ETH to USD rate...");
     const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
     return response.data.ethereum.usd;
   } catch (error) {
