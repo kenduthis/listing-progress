@@ -85,8 +85,14 @@ async function fetchBalances() {
 
     console.log(data);
 
+/ Ensure the public directory exists
+    const publicDir = path.join(__dirname, '..', 'public');
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir);
+    }
+
     // Write data to JSON file with appropriate permissions
-    const filePath = path.join(__dirname, 'balances.json');
+    const filePath = path.join(publicDir, 'balances.json');
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), { mode: 0o600 });
 
     return data;
