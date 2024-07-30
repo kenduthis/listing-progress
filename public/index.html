@@ -1,89 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Progress Towards MEXC Listing</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=717/https://s3.cointelegraph.com/storage/uploads/view/68f9c3cc192d09680e347bb9e24381cb.jpg');
-      background-size: cover;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-      color: #fff;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      height: 100vh;
-    }
-    h1 {
-      font-size: 3em;
-      margin-top: 20px;
-      color: #FFD700; /* Gold color for the header */
-    }
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-      border-radius: 10px;
-      margin-bottom: 50px;
-    }
-    .progress-container {
-      width: 100%;
-      background-color: #e0e0e0;
-      border-radius: 5px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 40px;
-      border-radius: 5px;
-      text-align: center;
-      line-height: 40px;
-      color: white;
-      transition: width 0.5s ease-in-out;
-      animation: grow 2s ease-in-out forwards;
-    }
-    @keyframes grow {
-      0% {
-        width: 0;
-      }
-      100% {
-        width: var(--width);
-      }
-    }
-    #usdtEthProgress {
-      background-color: #4caf50; /* Green */
-    }
-    #kenduProgress {
-      background-color: #2196F3; /* Blue */
-    }
-    p {
-      font-size: 1.2em;
-      margin: 10px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kendu Inu Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=717/https://s3.cointelegraph.com/storage/uploads/view/68f9c3cc192d09680e347bb9e24381cb.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        .progress-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar div {
+            height: 30px;
+            background-color: green;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 10px;
+        }
+        .info {
+            font-size: 1.5em;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
 <body>
-
-  <h1>Kendu Inu</h1>
-
-  <div class="container">
+    <h1>Kendu Inu</h1>
     <div class="progress-container">
-      <div id="usdtEthProgress" class="progress-bar">0%</div>
+        <h2>USDT + ETH Progress</h2>
+        <div id="usdtEthProgress" class="progress-bar"><div style="width: 0%;"></div></div>
     </div>
-    <p>$70,000 in USDT and ETH</p>
-
     <div class="progress-container">
-      <div id="kenduProgress" class="progress-bar">0%</div>
+        <h2>Kendu Progress</h2>
+        <div id="kenduProgress" class="progress-bar"><div style="width: 0%;"></div></div>
     </div>
-    <p>$90,000 in Kendu Tokens</p>
-  </div>
-
-  <script src="progress.js"></script>
+    <div class="info">
+        <p id="missingUsdtEth">Missing USD for listing: </p>
+        <p id="missingKendu">Missing Kendu in USD for listing: </p>
+    </div>
+    <script src="progress.js"></script>
 </body>
 </html>
