@@ -1,13 +1,18 @@
 name: Update Balances
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '*/12 * * * *' # Every 12 minutes
-  workflow_dispatch:
+  workflow_dispatch:  # This allows manual triggering
 
 jobs:
   update_balances:
     runs-on: ubuntu-latest
+
+    environment: Production
 
     steps:
     - name: Checkout code
@@ -34,6 +39,6 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add public/balances.json
         git commit -m 'Update balances'
-        git push
+        git push https://kenduthis:${{ secrets.PAT }}@github.com/kenduthis/listing-progress.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
