@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 require('dotenv').config();
@@ -27,7 +28,8 @@ app.use((req, res, next) => {
 app.use(express.static('public'));
 
 app.get('/api/balances', (req, res) => {
-  fs.readFile('public/balances.json', 'utf8', (err, data) => {
+  const filePath = path.join(__dirname, 'balances.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading balances:', err);
       res.status(500).send('Error reading balances');
