@@ -6,6 +6,7 @@ const path = require('path');
 const etherscanApiKey = process.env.ETHERSCAN_API_KEY;
 const walletAddress = process.env.WALLET_ADDRESS;
 const kenduContractAddress = process.env.KENDU_CONTRACT_ADDRESS;
+console.log(etherscanApiKey);
 
 // Fetch ETH balance
 async function fetchEthBalance() {
