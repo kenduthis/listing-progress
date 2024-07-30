@@ -25,8 +25,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static('public'));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Endpoint to get balances
 app.get('/public/balances', (req, res) => {
   const filePath = path.join(__dirname, 'balances.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
@@ -37,6 +39,17 @@ app.get('/public/balances', (req, res) => {
     }
     res.json(JSON.parse(data));
   });
+});
+
+// 404 handler
+app.use((req, res, next) => {
+  res.status(404).send('404: Not Found');
+});
+
+// General error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('500: Internal Server Error');
 });
 
 module.exports = app;
