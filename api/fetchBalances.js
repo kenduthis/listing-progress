@@ -1,6 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 const fs = require('fs');
+const path = require('path');
 
 const etherscanApiKey = process.env.ETHERSCAN_API_KEY;
 const walletAddress = process.env.WALLET_ADDRESS;
@@ -85,7 +86,8 @@ async function fetchBalances() {
     console.log(data);
 
     // Write data to JSON file with appropriate permissions
-    fs.writeFileSync('public/balances.json', JSON.stringify(data, null, 2), { mode: 0o600 });
+    const filePath = path.join(__dirname, 'balances.json');
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), { mode: 0o600 });
 
     return data;
   } catch (error) {
