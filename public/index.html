@@ -6,13 +6,13 @@
     <title>Kendu Inu Progress</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
             background-image: url('https://images.cointelegraph.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=717/https://s3.cointelegraph.com/storage/uploads/view/68f9c3cc192d09680e347bb9e24381cb.jpg');
             background-size: cover;
@@ -23,16 +23,20 @@
         h1 {
             margin-top: 20px;
             font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: red;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: fadeInDown 1s ease-in-out;
         }
         h2 {
             font-size: 2em;
             margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
         }
         .progress-container {
             width: 80%;
             max-width: 600px;
             margin: 20px auto;
+            animation: fadeInUp 1s ease-in-out;
         }
         .progress-bar {
             width: 100%;
@@ -40,6 +44,7 @@
             border-radius: 10px;
             overflow: hidden;
             margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .progress-bar div {
             height: 30px;
@@ -48,27 +53,50 @@
             line-height: 30px;
             color: white;
             border-radius: 10px;
+            transition: width 0.5s ease-in-out;
         }
         .info {
             font-size: 1.5em;
             margin-top: 20px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <h1>Kendu Inu</h1>
-    <div class="progress-container">
-        <h2>USDT + ETH Progress</h2>
-        <div id="usdtEthProgress" class="progress-bar"><div style="width: 0%;"></div></div>
-    </div>
-    <div class="progress-container">
-        <h2>Kendu Progress</h2>
-        <div id="kenduProgress" class="progress-bar"><div style="width: 0%;"></div></div>
-    </div>
-    <div class="info">
-        <p id="missingUsdtEth">Missing USD for listing: </p>
-        <p id="missingKendu">Missing Kendu in USD for listing: </p>
+    <div class="overlay">
+        <h1>Kendu Inu</h1>
+        <div class="progress-container">
+            <h2>USDT + ETH Progress</h2>
+            <div id="usdtEthProgress" class="progress-bar"><div style="width: 0%;"></div></div>
+        </div>
+        <div class="progress-container">
+            <h2>Kendu Progress</h2>
+            <div id="kenduProgress" class="progress-bar"><div style="width: 0%;"></div></div>
+        </div>
+        <div class="info">
+            <p id="missingUsdtEth">Missing USD for listing: </p>
+            <p id="missingKendu">Missing Kendu in USD for listing: </p>
+        </div>
     </div>
     <script src="progress.js"></script>
 </body>
