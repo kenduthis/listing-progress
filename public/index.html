@@ -46,23 +46,24 @@
             text-align: left;
         }
         .progress-bar {
-            width: 100%;
+            width: calc(100% - 20px);
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             overflow: hidden;
-            margin: 10px 0;
+            margin: 10px 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
+            height: 40px; /* Increased height */
         }
         .progress-bar:hover {
             transform: scale(1.05);
         }
         .progress-bar div {
-            height: 30px;
+            height: 100%; /* Fill the parent height */
             background: green;
             text-align: left;
             padding-left: 10px;
-            line-height: 30px;
+            line-height: 40px; /* Match the parent height */
             color: white;
             border-radius: 10px;
             transition: width 0.5s ease-in-out;
