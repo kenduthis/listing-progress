@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kendu Inu MEXC listing </title>
+    <title>Kendu Inu Progress</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -18,6 +18,7 @@
             background-size: cover;
             background-position: center;
             color: #fff;
+            text-align: center;
         }
         h1 {
             margin-top: 20px;
@@ -25,23 +26,17 @@
             color: red;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             animation: fadeInDown 1s ease-in-out;
-            align-self: flex-start;
-            margin-left: 20px;
         }
         h2 {
             font-size: 2em;
             margin-top: 20px;
             animation: fadeIn 1s ease-in-out;
-            text-align: left;
-            align-self: flex-start;
-            margin-left: 20px;
         }
         .progress-container {
             width: 80%;
             max-width: 600px;
             margin: 20px auto;
             animation: fadeInUp 1s ease-in-out;
-            text-align: left;
         }
         .progress-bar {
             width: 100%;
@@ -54,8 +49,7 @@
         .progress-bar div {
             height: 30px;
             background-color: green;
-            text-align: left;
-            padding-left: 10px;
+            text-align: center;
             line-height: 30px;
             color: white;
             border-radius: 10px;
@@ -66,9 +60,6 @@
             margin-top: 20px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease-in-out;
-            text-align: left;
-            align-self: flex-start;
-            margin-left: 20px;
         }
         .overlay {
             background-color: rgba(0, 0, 0, 0.5);
@@ -76,9 +67,6 @@
             border-radius: 10px;
             margin-top: 20px;
             animation: fadeIn 1s ease-in-out;
-            width: 100%;
-            max-width: 800px;
-            align-self: center;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -96,13 +84,13 @@
 </head>
 <body>
     <div class="overlay">
-        <h1>Kendu Inu fundraising for MEXC listing</h1>
+        <h1>Kendu Inu</h1>
         <div class="progress-container">
             <h2>USDT + ETH Progress</h2>
             <div id="usdtEthProgress" class="progress-bar"><div style="width: 0%;"></div></div>
         </div>
         <div class="progress-container">
-            <h2>Kendu tokens Progress</h2>
+            <h2>Kendu Progress</h2>
             <div id="kenduProgress" class="progress-bar"><div style="width: 0%;"></div></div>
         </div>
         <div class="info">
