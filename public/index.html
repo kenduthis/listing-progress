@@ -10,8 +10,8 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
             background-image: url('background.jpg');  /* Use the local image */
             background-size: cover;
@@ -19,10 +19,7 @@
             color: #fff;
         }
         .wallet-address {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 10px;
             font-size: 1.5em;
             color: gold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
@@ -32,18 +29,18 @@
             border-radius: 10px;
             font-family: 'Poppins', sans-serif;
             font-weight: bold;
-            z-index: 1000;
             width: fit-content;
         }
         .content {
-            width: 30%;
+            width: 80%;
+            max-width: 600px;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             margin: 20px;
         }
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             color: red;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             animation: fadeInDown 1s ease-in-out;
@@ -51,7 +48,7 @@
             animation: glow 1.5s infinite;
         }
         h2 {
-            font-size: 2em;
+            font-size: 1.5em;
             margin-top: 20px;
             animation: fadeIn 1s ease-in-out;
             text-align: left;
@@ -70,7 +67,7 @@
             margin: 10px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
-            height: 40px;
+            height: 30px;
         }
         .progress-bar:hover {
             transform: scale(1.05);
@@ -79,7 +76,7 @@
             height: 100%;
             background: linear-gradient(90deg, #56ab2f, #a8e063);
             text-align: center;
-            line-height: 40px;
+            line-height: 30px;
             color: white;
             border-radius: 20px;
             transition: width 0.5s ease-in-out;
@@ -98,7 +95,7 @@
             opacity: 1;
         }
         .info {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-top: 20px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease-in-out;
@@ -108,7 +105,7 @@
             color: gold;
         }
         .message {
-            font-size: 1.2em;
+            font-size: 1em;
             margin-top: 20px;
             color: white;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
@@ -126,8 +123,8 @@
         }
         .links a {
             display: block;
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             overflow: hidden;
             border-radius: 10px;
             transition: transform 0.3s ease;
@@ -156,6 +153,74 @@
             0% { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red; }
             100% { text-shadow: 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red, 0 0 80px red; }
         }
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .wallet-address {
+                font-size: 1.2em;
+                padding: 5px 10px;
+            }
+            .content {
+                width: 90%;
+                max-width: 500px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            .progress-bar {
+                height: 20px;
+            }
+            .progress-bar div {
+                line-height: 20px;
+            }
+            .info {
+                font-size: 1em;
+            }
+            .message {
+                font-size: 0.9em;
+            }
+            .links a {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wallet-address {
+                font-size: 1em;
+                padding: 5px;
+            }
+            .content {
+                width: 95%;
+                max-width: 400px;
+                margin: 5px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+            .progress-bar {
+                height: 15px;
+            }
+            .progress-bar div {
+                line-height: 15px;
+            }
+            .info {
+                font-size: 0.9em;
+            }
+            .message {
+                font-size: 0.8em;
+            }
+            .links a {
+                width: 45px;
+                height: 45px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -178,17 +243,18 @@
             <p id="missingKendu">Missing Kendu in USD for listing: </p>
         </div>
         <div class="message">
-            <p>Every Kendu Inu member plays a crucial role in our journey. Together, we are not just building a community—we're laying the foundation for something much bigger. Getting listed on MEXC is more than just a milestone; it's an opportunity to exponentially increase our visibility, boost our trading volume, and elevate Kendu Inu to new heights.</p>
+            <p>Every Kendu Inu member plays a crucial role in our journey. Together, we are not just building a community—we're laying the foundation
+            <p>for something much bigger. Getting listed on MEXC is more than just a milestone; it's an opportunity to exponentially increase our visibility, boost our trading volume, and elevate Kendu Inu to new heights.</p>
             <p>This listing will position us perfectly for the upcoming bull run, allowing us to capitalize on market momentum and grow our market capitalization. Your contribution today directly impacts our collective success tomorrow. <strong>We don't gamble; we work.</strong> Let’s achieve greatness together—because with every step, every contribution, and every member, we move closer to our goal.</p>
         </div>
     </div>
 
     <div class="links">
         <a href="https://kenduinu.com" target="_blank">
-            <img src="website.jpg" alt="Kendu Inu Website">
+            <img src="website.png" alt="Kendu Inu Website">
         </a>
         <a href="https://kenduchads.com" target="_blank">
-            <img src="kenduchads.png" alt="Kendu Chads Website">
+            <img src="website.png" alt="Kendu Chads Website">
         </a>
         <a href="https://x.com/KenduInu" target="_blank">
             <img src="X.jpg" alt="Kendu Inu X">
