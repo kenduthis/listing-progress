@@ -312,9 +312,9 @@
             return data;
         }
 
-        async function initializeCalculator() {
+         async function initializeCalculator() {
             const balances = await fetchBalances();
-            const kenduToUsdRate = balances.kenduBalanceInUsd / balances.kenduBalance; // Calculate dynamic Kendu to USD rate
+            const kenduToUsdRate = balances.kenduBalanceInUsd / balances.kenduBalance;
 
             const kenduGoal = 70000;
             const usdGoal = 90000;
@@ -324,26 +324,49 @@
                 let progress = 0;
 
                 if (type === 'kendu') {
-                    const kenduAmount = parseFloat(document.getElementById('kenduAmount').value);
+                    const kenduAmount = parseFloat(removeCommas(document.getElementById('kenduAmount').value));
                     const totalValueInUsd = kenduAmount * kenduToUsdRate;
                     progress = (totalValueInUsd / kenduGoal) * 100;
-                    message = `With a donation of ${kenduAmount} Kendu (worth $${totalValueInUsd.toFixed(2)}), you would move us ${progress.toFixed(2)}% closer to the Kendu goal of $${kenduGoal}.`;
+                    message = `With a donation of ${formatWithCommas(kenduAmount)} Kendu (worth $${formatWithCommas(totalValueInUsd.toFixed(2))}), you would move us ${progress.toFixed(2)}% closer to the Kendu goal of $${formatWithCommas(kenduGoal)}.`;
 
                 } else if (type === 'usd') {
-                    const usdAmount = parseFloat(document.getElementById('usdAmount').value);
+                    const usdAmount = parseFloat(removeCommas(document.getElementById('usdAmount').value));
                     progress = (usdAmount / usdGoal) * 100;
-                    message = `A donation of $${usdAmount} would move us ${progress.toFixed(2)}% closer to the USD goal of $${usdGoal}.`;
+                    message = `A donation of $${formatWithCommas(usdAmount)} would move us ${progress.toFixed(2)}% closer to the USD goal of $${formatWithCommas(usdGoal)}.`;
                 }
 
                 document.getElementById('impactMessage').innerText = message;
             }
 
-            // Attach the calculateImpact function to the global scope
             window.calculateImpact = calculateImpact;
+        }
+
+        // Format number with commas
+        function formatNumber(input) {
+            let value = input.value.replace(/,/g, '');
+            input.value = formatWithCommas(value);
+        }
+
+        // Add commas to a number
+        function formatWithCommas(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Remove commas from a number
+        function removeCommas(value) {
+            return value.replace(/,/g, '');
+        }
+
+        // Allow only numbers in input
+        function isNumberKey(evt) {
+            const charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
         }
 
         initializeCalculator();
     </script>
 </body>
 </html>
-
