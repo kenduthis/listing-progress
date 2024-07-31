@@ -12,8 +12,6 @@ jobs:
   update_balances:
     runs-on: ubuntu-latest
 
-    environment: Production
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -33,10 +31,17 @@ jobs:
         WALLET_ADDRESS: ${{ secrets.WALLET_ADDRESS }}
         KENDU_CONTRACT_ADDRESS: ${{ secrets.KENDU_CONTRACT_ADDRESS }}
 
-    - name: Commit and push changes
+    - name: Configure Git
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Pull latest changes
+      run: |
+        git pull origin main
+
+    - name: Commit and push changes
+      run: |
         git add public/balances.json
         git commit -m 'Update balances'
         git push https://kenduthis:${{ secrets.PAT }}@github.com/kenduthis/listing-progress.git
