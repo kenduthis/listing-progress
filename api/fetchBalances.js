@@ -6,7 +6,8 @@ const path = require('path');
 const etherscanApiKey = process.env.ETHERSCAN_API_KEY;
 const walletAddress = process.env.WALLET_ADDRESS;
 const kenduContractAddress = process.env.KENDU_CONTRACT_ADDRESS;
-console.log(etherscanApiKey);
+const usdcContractAddress = '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'; // USDC contract address
+
 
 // Fetch ETH balance
 async function fetchEthBalance() {
@@ -28,6 +29,18 @@ async function fetchUsdtBalance() {
     return response.data.result / 1e6; // USDT has 6 decimals
   } catch (error) {
     console.error('Error fetching USDT balance:', error);
+    throw error;
+  }
+}
+
+// Fetch USDC balance
+async function fetchUsdcBalance() {
+  try {
+    console.log("Fetching USDC balance...");
+    const response = await axios.get(`https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=${usdcContractAddress}&address=${walletAddress}&tag=latest&apikey=${etherscanApiKey}`);
+    return response.data.result / 1e6; // USDC has 6 decimals
+  } catch (error) {
+    console.error('Error fetching USDC balance:', error);
     throw error;
   }
 }
@@ -71,17 +84,19 @@ async function fetchBalances() {
   try {
     const ethBalance = await fetchEthBalance();
     const usdtBalance = await fetchUsdtBalance();
+    const usdcBalance = await fetchUsdcBalance(); // Fetch USDC balance
     const kenduBalance = await fetchKenduBalance();
     const ethToUsdRate = await fetchEthToUsdRate();
     const kenduToUsdRate = await fetchKenduToUsdRate();
 
     const ethBalanceInUsd = ethBalance * ethToUsdRate;
     const kenduBalanceInUsd = kenduBalance * kenduToUsdRate;
-    const totalUsdBalance = usdtBalance + ethBalanceInUsd;
+    const totalUsdBalance = usdtBalance + ethBalanceInUsd + usdcBalance;
 
     const data = {
       ethBalance,
       usdtBalance,
+      usdcBalance,
       kenduBalance,
       ethBalanceInUsd,
       kenduBalanceInUsd,
