@@ -1,0 +1,44 @@
+name: Update Balances
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '*/12 * * * *' # Every 12 minutes
+  workflow_dispatch:  # This allows manual triggering
+
+jobs:
+  update_balances:
+    runs-on: ubuntu-latest
+
+    environment: Production
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run balance fetch script
+      run: node api/fetchBalances.js
+      env:
+        ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+        WALLET_ADDRESS: ${{ secrets.WALLET_ADDRESS }}
+        KENDU_CONTRACT_ADDRESS: ${{ secrets.KENDU_CONTRACT_ADDRESS }}
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add public/balances.json
+        git commit -m 'Update balances'
+        git push https://kenduthis:${{ secrets.PAT }}@github.com/kenduthis/listing-progress.git
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
