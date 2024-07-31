@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/10 * * * *' # Every 8 minutes
+    - cron: '*/10 * * * *' # Every 12 minutes
   workflow_dispatch:  # This allows manual triggering
 
 jobs:
@@ -39,16 +39,13 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Pull latest changes
-      run: git pull origin main
+      run: |
+        git pull origin main
 
-    - name: Commit and push changes if balances.json updated
+    - name: Commit and push changes
       run: |
         git add public/balances.json
-        if ! git diff-index --quiet HEAD --; then
-          git commit -m 'Update balances'
-          git push https://kenduthis:${{ secrets.PAT }}@github.com/kenduthis/listing-progress.git
-        else
-          echo "No changes to commit"
-        fi
+        git commit -m 'Update balances'
+        git push https://kenduthis:${{ secrets.PAT }}@github.com/kenduthis/listing-progress.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
