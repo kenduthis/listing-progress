@@ -17,6 +17,7 @@ async function fetchProgress() {
         // Check if the goals are reached
         if (usdtEthProgress >= 100) {
             usdtEthProgressBar.innerText = '100% ✓';
+            usdtEthProgressBar.parentNode.classList.add('complete');
             document.getElementById('missingUsdtEth').innerText = 'Reached ETH + USD donations goal ✓';
         } else {
             usdtEthProgressBar.innerText = `${usdtEthProgress.toFixed(2)}%`;
@@ -26,6 +27,7 @@ async function fetchProgress() {
 
         if (kenduProgress >= 100) {
             kenduProgressBar.innerText = '100% ✓';
+            kenduProgressBar.parentNode.classList.add('complete');
             document.getElementById('missingKendu').innerText = 'Reached Kendu donations goal ✓';
         } else {
             kenduProgressBar.innerText = `${kenduProgress.toFixed(2)}%`;
