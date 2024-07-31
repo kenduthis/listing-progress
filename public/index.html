@@ -98,6 +98,31 @@
             animation: fadeInUp 1s ease-in-out;
             text-align: left;
         }
+        .links {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .links a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .links a img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .links a:hover {
+            transform: scale(1.1);
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -136,6 +161,22 @@
             <p>This listing will position us perfectly for the upcoming bull run, allowing us to capitalize on market momentum and grow our market capitalization. Your contribution today directly impacts our collective success tomorrow. <strong>We don't gamble; we work.</strong> Let’s achieve greatness together—because with every step, every contribution, and every member, we move closer to our goal.</p>
         </div>
     </div>
+
+    <div class="links">
+        <a href="https://kenduinu.com" target="_blank">
+            <img src="website.png" alt="Kendu Inu Website">
+        </a>
+        <a href="https://kenduchads.com" target="_blank">
+            <img src="website.png" alt="Kendu Chads Website">
+        </a>
+        <a href="https://x.com/KenduInu" target="_blank">
+            <img src="X.jpg" alt="Kendu Inu X">
+        </a>
+        <a href="https://t.me/KenduInu" target="_blank">
+            <img src="telegram.jpeg" alt="Kendu Telegram">
+        </a>
+    </div>
+
     <script src="progress.js"></script>
 </body>
 </html>
