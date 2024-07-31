@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/12 * * * *' # Every 12 minutes
+    - cron: '*/8 * * * *' # Every 12 minutes
   workflow_dispatch:  # This allows manual triggering
 
 jobs:
