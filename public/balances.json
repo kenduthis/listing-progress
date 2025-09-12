@@ -1,9 +1,9 @@
 {
   "ethBalance": 1.3983641787309673,
   "usdtBalance": 0,
-  "usdcBalance": null,
-  "kenduBalance": null,
-  "ethBalanceInUsd": 6365.731299911621,
-  "kenduBalanceInUsd": null,
-  "totalUsdBalance": null
+  "usdcBalance": 25.002104,
+  "kenduBalance": 4489413951.490725,
+  "ethBalanceInUsd": 6385.602054891387,
+  "kenduBalanceInUsd": 63300.736716019215,
+  "totalUsdBalance": 6410.604158891387
 }
